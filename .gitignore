@@ -1,0 +1,8 @@
+__pycache__/
+.ipynb_checkpoints/
+bert_fake_news_model/
+*.pkl
+Fake.csv
+True.csv
+*.csv
+Phase1_Baseline_Model.ipynb

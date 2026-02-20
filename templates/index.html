@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Fake News Detector</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            text-align: center;
+            padding: 40px;
+        }
+
+        textarea {
+            width: 60%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            display: inline-block;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        .fake {
+            color: red;
+            font-weight: bold;
+        }
+
+        .real {
+            color: green;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>AI Fake News Detector</h1>
+
+    <form method="POST">
+        <textarea name="news" placeholder="Enter news text here..."></textarea><br><br>
+        <button type="submit">Analyze</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2 class="{{ 'fake' if prediction == 'Fake' else 'real' }}">
+            Prediction: {{ prediction }}
+        </h2>
+        <p>Confidence: {{ confidence }}</p>
+    </div>
+    {% endif %}
+    {% if bias %}
+        <div class="result">
+            <h3>Bias Analysis</h3>
+            <p>Tone: {{ bias.Tone }}</p>
+            <p>Sentiment Score: {{ bias["Sentiment Score"] }}</p>
+            <p>Sensational Words: {{ bias["Sensational Word Count"] }}</p>
+        </div>
+    {% endif %}
+
+</body>
+</html>
