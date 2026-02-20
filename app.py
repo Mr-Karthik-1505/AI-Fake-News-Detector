@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
+import os
+print("Current Working Directory:", os.getcwd())
 
 app = Flask(__name__)
 
@@ -28,7 +30,7 @@ def analyze_bias(text):
         tone = "Slightly Negative"
     else:
         tone = "Neutral"
-        
+
     sensational_words = [
         "shocking", "unbelievable", "breaking",
         "secret", "exposed", "urgent", "massive"
